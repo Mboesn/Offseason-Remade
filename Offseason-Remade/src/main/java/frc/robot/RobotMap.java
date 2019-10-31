@@ -17,10 +17,12 @@ public class RobotMap {
     public static final int LEFT_MIDDLE_MOTOR = 0;
     public static final int LEFT_REAR_MOTOR = 0;
 
-    public static final int RIGHT_ENCIDER_CHANNEL_A = 0;
-    public static final int RIGHT_ENCIDER_CHANNEL_B = 0;
-    public static final int LEFT_ENCIDER_CHANNEL_A = 0;
-    public static final int LEFT_ENCIDER_CHANNEL_B = 0;
+    public static final int RIGHT_ENCODER_CHANNEL_A = 0;
+    public static final int RIGHT_ENCODER_CHANNEL_B = 0;
+    public static final int LEFT_ENCODER_CHANNEL_A = 0;
+    public static final int LEFT_ENCODER_CHANNEL_B = 0;
+
+    public static final int GYRO = 0;
   }
 
 }

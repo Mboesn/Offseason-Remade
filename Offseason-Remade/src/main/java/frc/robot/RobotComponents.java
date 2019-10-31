@@ -3,6 +3,7 @@ package frc.robot;
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
+import edu.wpi.first.wpilibj.AnalogGyro;
 import edu.wpi.first.wpilibj.Encoder;
 
 /**
@@ -26,10 +27,11 @@ public class RobotComponents {
         public static final CANSparkMax LEFT_REAR_MOTOR = new CANSparkMax(RobotMap.Drivetrain.LEFT_REAR_MOTOR,
                 MotorType.kBrushless);
 
-        // TODO: add gyro
-        public static final Encoder RIGHT_ENCODER = new Encoder(RobotMap.Drivetrain.RIGHT_ENCIDER_CHANNEL_A,
-                RobotMap.Drivetrain.RIGHT_ENCIDER_CHANNEL_B);
-        public static final Encoder LEFT_ENCODER = new Encoder(RobotMap.Drivetrain.LEFT_ENCIDER_CHANNEL_A,
-                RobotMap.Drivetrain.LEFT_ENCIDER_CHANNEL_B);
+        public static final Encoder RIGHT_ENCODER = new Encoder(RobotMap.Drivetrain.RIGHT_ENCODER_CHANNEL_A,
+                RobotMap.Drivetrain.RIGHT_ENCODER_CHANNEL_B);
+        public static final Encoder LEFT_ENCODER = new Encoder(RobotMap.Drivetrain.LEFT_ENCODER_CHANNEL_A,
+                RobotMap.Drivetrain.LEFT_ENCODER_CHANNEL_B);
+// adis16448
+        public static final AnalogGyro GYRO = new AnalogGyro(RobotMap.Drivetrain.GYRO);
     }
 }
