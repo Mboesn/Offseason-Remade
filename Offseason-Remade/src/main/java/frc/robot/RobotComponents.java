@@ -1,10 +1,10 @@
 package frc.robot;
 
+import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
 import edu.wpi.first.wpilibj.AnalogGyro;
-import edu.wpi.first.wpilibj.Encoder;
 
 /**
  * This class contains the type of motors and sensors that are used in the robot
@@ -26,10 +26,10 @@ public class RobotComponents {
         public static final CANSparkMax LEFT_REAR_MOTOR = new CANSparkMax(RobotMap.Drivetrain.LEFT_REAR_MOTOR,
                 MotorType.kBrushless);
 
-        public static final Encoder RIGHT_ENCODER = new Encoder(RobotMap.Drivetrain.RIGHT_ENCODER_CHANNEL_A,
-                RobotMap.Drivetrain.RIGHT_ENCODER_CHANNEL_B);
-        public static final Encoder LEFT_ENCODER = new Encoder(RobotMap.Drivetrain.LEFT_ENCODER_CHANNEL_A,
-                RobotMap.Drivetrain.LEFT_ENCODER_CHANNEL_B);
+        // the encoders are not connected to the same motor controllers as the motors
+        public static final TalonSRX RIGHT_ENCODER = new TalonSRX(RobotMap.Drivetrain.RIGHT_ENCODER);
+        // this motor is also connected to the cargo collector motor
+        public static final TalonSRX LEFT_ENCODER = new TalonSRX(RobotMap.Drivetrain.LEFT_ENCODER);
                 
         public static final AnalogGyro GYRO = new AnalogGyro(RobotMap.Drivetrain.GYRO);
     }

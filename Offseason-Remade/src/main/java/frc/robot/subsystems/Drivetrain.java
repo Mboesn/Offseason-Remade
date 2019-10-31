@@ -1,7 +1,8 @@
 package frc.robot.subsystems;
 
+import com.ctre.phoenix.motorcontrol.can.TalonSRX;
+
 import edu.wpi.first.wpilibj.AnalogGyro;
-import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
@@ -12,16 +13,16 @@ import frc.robot.RobotConstants;
  * this is the drivetrain's subsystem
  */
 public class Drivetrain extends Subsystem {
-  // TODO: add gyro
+  
   private SpeedControllerGroup rightMotors;
 
   private SpeedControllerGroup leftMotors;
 
   private DifferentialDrive drivetrain;
 
-  private Encoder rightEncoder;
+  private TalonSRX rightEncoder;
 
-  private Encoder leftEncoder;
+  private TalonSRX leftEncoder;
 
   private AnalogGyro gyro;
 
@@ -39,10 +40,6 @@ public class Drivetrain extends Subsystem {
     this.gyro = RobotComponents.Drivetrain.GYRO;
 
     this.drivetrain = new DifferentialDrive(this.leftMotors, this.rightMotors);
-
-    this.rightEncoder.setDistancePerPulse(RobotConstants.Sensors.DRIVETRAIN_DISTANCE_PER_PULSE);
-
-    this.leftEncoder.setDistancePerPulse(RobotConstants.Sensors.DRIVETRAIN_DISTANCE_PER_PULSE);
   }
 
   public void arcadeDrive(double xPower, double yPower) {
@@ -58,28 +55,15 @@ public class Drivetrain extends Subsystem {
   }
 
   public Double getRightDistance() {
-    return rightEncoder.getDistance();
+    return rightEncoder.getSelectedSensorPosition() * RobotConstants.Sensors.DRIVETRAIN_DISTANCE_PER_PULSE;
   }
 
   public Double getLeftDistance() {
-    return leftEncoder.getDistance();
+    return leftEncoder.getSelectedSensorPosition() * RobotConstants.Sensors.DRIVETRAIN_DISTANCE_PER_PULSE;
   }
 
   public Double getAverageDistance() {
-    return (rightEncoder.getDistance() + leftEncoder.getDistance()) / 2;
-  }
-
-  public Double getRightEncoderPID() {
-    return rightEncoder.pidGet();
-  }
-
-  public Double getLeftEncoderPID() {
-    return leftEncoder.pidGet();
-  }
-
-  public void resetEncoders() {
-    rightEncoder.reset();
-    leftEncoder.reset();
+    return (getRightDistance() + getLeftDistance()) / 2;
   }
 
   public double getAngle(){
