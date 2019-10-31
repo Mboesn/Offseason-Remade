@@ -12,7 +12,6 @@ import edu.wpi.first.wpilibj.Encoder;
 public class RobotComponents {
 
     public static class Drivetrain {
-        // TODO: find if brushed on not
         public static final CANSparkMax RIGHT_FRONT_MOTOR = new CANSparkMax(RobotMap.Drivetrain.RIGHT_FRONT_MOTOR,
                 MotorType.kBrushless);
         public static final CANSparkMax RIGHT_MIDDLE_MOTOR = new CANSparkMax(RobotMap.Drivetrain.RIGHT_MIDDLE_MOTOR,
@@ -31,7 +30,7 @@ public class RobotComponents {
                 RobotMap.Drivetrain.RIGHT_ENCODER_CHANNEL_B);
         public static final Encoder LEFT_ENCODER = new Encoder(RobotMap.Drivetrain.LEFT_ENCODER_CHANNEL_A,
                 RobotMap.Drivetrain.LEFT_ENCODER_CHANNEL_B);
-// adis16448
+                
         public static final AnalogGyro GYRO = new AnalogGyro(RobotMap.Drivetrain.GYRO);
     }
 }
