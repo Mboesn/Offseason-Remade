@@ -8,5 +8,7 @@ public class RobotConstants {
         // TODO: find real values
         /** The distance the robot travels every pulse */
         public static final Double DRIVETRAIN_DISTANCE_PER_PULSE = 33.0;
+        /** The distance the lift travels every pulse */
+        public static final Double LIFT_DISTANCE_PER_PULSE = 33.0;
     }
 }
