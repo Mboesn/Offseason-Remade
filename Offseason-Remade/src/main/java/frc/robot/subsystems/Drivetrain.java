@@ -13,7 +13,7 @@ import frc.robot.RobotConstants;
  * this is the drivetrain's subsystem
  */
 public class Drivetrain extends Subsystem {
-  
+
   private SpeedControllerGroup rightMotors;
 
   private SpeedControllerGroup leftMotors;
@@ -66,15 +66,15 @@ public class Drivetrain extends Subsystem {
     return (getRightDistance() + getLeftDistance()) / 2;
   }
 
-  public double getAngle(){
+  public double getAngle() {
     return gyro.getAngle();
   }
 
-  public double getGyroPID(){
+  public double getGyroPID() {
     return gyro.pidGet();
   }
 
-  public void calibrateGyro(){
+  public void calibrateGyro() {
     gyro.calibrate();
   }
 
