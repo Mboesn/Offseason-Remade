@@ -5,6 +5,10 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import frc.robot.subsystems.CargoCollector;
+import frc.robot.subsystems.Drivetrain;
+import frc.robot.subsystems.HatchCollector;
+import frc.robot.subsystems.Lift;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -19,6 +23,14 @@ public class Robot extends TimedRobot {
   Command m_autonomousCommand;
   SendableChooser<Command> m_chooser = new SendableChooser<>();
 
+  public static Drivetrain drivetrain;
+
+  public static CargoCollector cargoCollector;
+
+  public static HatchCollector hatchCollector;
+
+  public static Lift lift;
+
   /**
    * This function is run when the robot is first started up and should be used
    * for any initialization code.
@@ -28,6 +40,15 @@ public class Robot extends TimedRobot {
     m_oi = new OI();
     // chooser.addOption("My Auto", new MyAutoCommand());
     SmartDashboard.putData("Auto mode", m_chooser);
+
+    drivetrain = new Drivetrain();
+
+    cargoCollector = new CargoCollector();
+
+    hatchCollector = new HatchCollector();
+
+    lift = new Lift();
+
   }
 
   /**
