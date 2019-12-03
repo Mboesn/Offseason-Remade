@@ -124,6 +124,13 @@ public class Robot extends TimedRobot {
     if (m_autonomousCommand != null) {
       m_autonomousCommand.cancel();
     }
+
+    //TODO: changed for real game to autonamasInit
+    /**setting the default state of the hatch collector */
+
+    hatchCollector.setEject(false);
+
+    hatchCollector.setLock(true);
   }
 
   /**
