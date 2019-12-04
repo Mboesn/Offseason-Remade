@@ -48,8 +48,5 @@ public class RobotComponents {
                 public static final DoubleSolenoid HATCH_LOCK = new DoubleSolenoid(
                                 RobotMap.PCM.HATCH_HOLDER_LOCK_SOLENOID_FORWARD,
                                 RobotMap.PCM.HATCH_HOLDER_LOCK_SOLENOID_REVERSE);
-                public static final DoubleSolenoid HATCH_EJECT = new DoubleSolenoid(
-                                RobotMap.PCM.HATCH_HOLDER_EJECT_SOLENOID_FORWARD,
-                                RobotMap.PCM.HATCH_HOLDER_EJECT_SOLENOID_REVERSE);
         }
 }

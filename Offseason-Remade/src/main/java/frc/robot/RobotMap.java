@@ -39,7 +39,5 @@ public class RobotMap {
   static class PCM {
     public static final int HATCH_HOLDER_LOCK_SOLENOID_FORWARD = 2;
     public static final int HATCH_HOLDER_LOCK_SOLENOID_REVERSE = 3;
-    public static final int HATCH_HOLDER_EJECT_SOLENOID_FORWARD = 4;
-    public static final int HATCH_HOLDER_EJECT_SOLENOID_REVERSE = 5;
   }
 }
