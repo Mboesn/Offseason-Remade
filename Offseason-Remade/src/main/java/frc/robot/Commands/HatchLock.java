@@ -8,18 +8,18 @@ import frc.robot.Robot;
  */
 public class HatchLock extends InstantCommand {
 
-  private boolean lock;
-
-  public HatchLock(boolean lock) {
+  public HatchLock() {
     super();
     requires(Robot.hatchCollector);
-    this.lock = lock;
   }
 
   // Called once when the command executes
   @Override
   protected void initialize() {
-    Robot.hatchCollector.setLock(lock);
+    // the command checks if what the current state of the hatch collecter is and
+    // then does the opposite.
+    Robot.hatchCollector.setLock(!Robot.robotStates.isHatchCollectorLocked());
+    Robot.robotStates.setCollectorState(!Robot.robotStates.isHatchCollectorLocked());
   }
 
 }

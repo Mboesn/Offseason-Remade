@@ -11,13 +11,12 @@ public class HatchCollector extends Subsystem {
 
   private DoubleSolenoid hatchLock;
 
-  public HatchCollector(){
+  public HatchCollector() {
     this.hatchLock = RobotComponents.HatchCollector.HATCH_LOCK;
   }
-//TODO: check if this is forward or backwards
-//TODO: saftey
-  public void setLock(boolean lock){
-    hatchLock.set(lock ?  DoubleSolenoid.Value.kForward : DoubleSolenoid.Value.kReverse);
+
+  public void setLock(boolean lock) {
+    hatchLock.set(lock ? DoubleSolenoid.Value.kForward : DoubleSolenoid.Value.kReverse);
   }
 
   @Override
