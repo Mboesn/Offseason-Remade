@@ -4,7 +4,7 @@ import edu.wpi.first.wpilibj.command.InstantCommand;
 import frc.robot.Robot;
 
 /**
- * This changes the desiered hieght in the robotstates
+ * This changes the desiered height in the robotstates
  */
 public class ChangedDesiredHeight extends InstantCommand {
 
