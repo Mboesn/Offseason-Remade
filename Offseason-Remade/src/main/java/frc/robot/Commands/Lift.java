@@ -37,6 +37,10 @@ public class Lift extends Command {
     this.desiredHeight = desiredHeight;
   }
 
+  /**
+   * this is used to quickly change values using the shuffleboard while finding
+   * pid values
+   */
   public Lift(double desiredHeight) {
     this(SmartDashboard.getNumber("kp: ", 0), SmartDashboard.getNumber("ki: ", 0), SmartDashboard.getNumber("kd: ", 0),
         SmartDashboard.getNumber("waitTime: ", 0), SmartDashboard.getNumber("tolerance: ", 0), desiredHeight);
