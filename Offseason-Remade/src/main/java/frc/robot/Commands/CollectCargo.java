@@ -17,7 +17,7 @@ public class CollectCargo extends Command {
   private double startTime;
 
   /**
-   * @param collect if the robot needs to collect or eject the cargo
+   * @param collect checks if the robot needs to collect or eject the cargo
    */
   public CollectCargo(boolean collect, double power, double waitTime) {
     requires(Robot.cargoCollector);
