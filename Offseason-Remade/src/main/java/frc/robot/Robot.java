@@ -31,6 +31,10 @@ public class Robot extends TimedRobot {
 
   public static Lift lift;
 
+  public static OI oi;
+
+  public static RobotStates robotStates;
+
   /**
    * This function is run when the robot is first started up and should be used
    * for any initialization code.
@@ -48,6 +52,8 @@ public class Robot extends TimedRobot {
     hatchCollector = new HatchCollector();
 
     lift = new Lift();
+
+    robotStates = new RobotStates();
 
   }
 
@@ -125,8 +131,8 @@ public class Robot extends TimedRobot {
       m_autonomousCommand.cancel();
     }
 
-    //TODO: changed for real game to autonamasInit
-    /**setting the default state of the hatch collector */
+    // TODO: changed for real game to autonamasInit
+    /** setting the default state of the hatch collector */
     hatchCollector.setLock(true);
   }
 

@@ -7,24 +7,24 @@ package frc.robot;
  * floating around.
  */
 public class RobotMap {
-  // TODO: set real values
 
   // Device ID's for devices connected to the CAN bus
   public static class CAN {
     // drivetrain
-    public static final int DRIVETRAIN_RIGHT_FRONT_MOTOR = 0;
-    public static final int DRIVETRAIN_RIGHT_MIDDLE_MOTOR = 0;
-    public static final int DRIVETRAIN_RIGHT_REAR_MOTOR = 0;
-    public static final int DRIVETRAIN_LEFT_FRONT_MOTOR = 0;
-    public static final int DRIVETRAIN_LEFT_MIDDLE_MOTOR = 0;
-    public static final int DRIVETRAIN_LEFT_REAR_MOTOR = 0;
+    public static final int DRIVETRAIN_RIGHT_FRONT_MOTOR = 9;
+    public static final int DRIVETRAIN_RIGHT_MIDDLE_MOTOR = 8;
+    public static final int DRIVETRAIN_RIGHT_REAR_MOTOR = 7;
+    public static final int DRIVETRAIN_LEFT_FRONT_MOTOR = 5;
+    public static final int DRIVETRAIN_LEFT_MIDDLE_MOTOR = 4;
+    public static final int DRIVETRAIN_LEFT_REAR_MOTOR = 3;
 
-    public static final int DRIVETRAIN_RIGHT_ENCODER = 0;
+    public static final int DRIVETRAIN_RIGHT_ENCODER = 12;
+    // TODO: find this port
     public static final int DRIVETRAIN_LEFT_ENCODER = 0;
 
     // lift
-    public static final int LIFT_RIGHT_MOTOR = 0;
-    public static final int LIFT_LEFT_MOTOR = 0;
+    public static final int LIFT_RIGHT_MOTOR = 2;
+    public static final int LIFT_LEFT_MOTOR = 6;
 
     // cargo collector
     public static final int CARGO_HOLDER_MOTOR = 11;
@@ -39,5 +39,6 @@ public class RobotMap {
   static class PCM {
     public static final int HATCH_HOLDER_LOCK_SOLENOID_FORWARD = 2;
     public static final int HATCH_HOLDER_LOCK_SOLENOID_REVERSE = 3;
+    // public static final int PCM_PORT = 0;
   }
 }

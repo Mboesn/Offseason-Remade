@@ -6,8 +6,10 @@ import edu.wpi.first.wpilibj.AnalogGyro;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
+import frc.robot.Robot;
 import frc.robot.RobotComponents;
 import frc.robot.RobotConstants;
+import frc.robot.Commands.DriveArcade;
 
 /**
  * this is the drivetrain's subsystem
@@ -80,5 +82,7 @@ public class Drivetrain extends Subsystem {
 
   @Override
   public void initDefaultCommand() {
+    setDefaultCommand(
+        new DriveArcade(() -> Robot.m_oi.getDriverJoystick().getX(), () -> Robot.m_oi.getDriverJoystick().getY()));
   }
 }

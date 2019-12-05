@@ -6,9 +6,10 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.Robot;
 import frc.robot.PIDSources.LiftPIDSource;
+import frc.robot.RobotConstants.Height;
 
 /** this command sets the lift to the desired height */
-public class Lift extends Command {
+public class ChangeLiftHeight extends Command {
 
   /** the values of the pid */
   private double kp, kd, ki;
@@ -28,20 +29,20 @@ public class Lift extends Command {
 
   private LiftPIDSource pidSource;
 
-  public Lift(double kp, double kd, double ki, double waitTime, double tolerance, double desiredHeight) {
+  public ChangeLiftHeight(double kp, double kd, double ki, double waitTime, double tolerance, Height desiredHeight) {
     this.kp = kp;
     this.ki = ki;
     this.kd = kd;
     this.waitTime = waitTime;
     this.tolerance = tolerance;
-    this.desiredHeight = desiredHeight;
+    this.desiredHeight = desiredHeight.getHeight();
   }
 
   /**
    * this is used to quickly change values using the shuffleboard while finding
    * pid values
    */
-  public Lift(double desiredHeight) {
+  public ChangeLiftHeight(Height desiredHeight) {
     this(SmartDashboard.getNumber("kp: ", 0), SmartDashboard.getNumber("ki: ", 0), SmartDashboard.getNumber("kd: ", 0),
         SmartDashboard.getNumber("waitTime: ", 0), SmartDashboard.getNumber("tolerance: ", 0), desiredHeight);
   }

@@ -27,9 +27,12 @@ public class Lift extends Subsystem {
     rightMotor.set(ControlMode.PercentOutput, power);
   }
 
+  public void resetEncoders(){
+    this.rightMotor.setSelectedSensorPosition(0);
+  }
+
   public double getHeight() {
-    return rightMotor.getSelectedSensorPosition() * RobotConstants.Sensors.LIFT_DISTANCE_PER_PULSE
-        + RobotConstants.RobotDimensions.LIFT_HEIGHT_OFFSET;
+    return rightMotor.getSelectedSensorPosition() * RobotConstants.Sensors.LIFT_DISTANCE_PER_PULSE;
   }
 
   @Override
