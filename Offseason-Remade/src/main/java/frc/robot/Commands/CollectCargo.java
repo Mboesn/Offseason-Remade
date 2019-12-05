@@ -2,6 +2,7 @@ package frc.robot.Commands;
 
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.Robot;
 
 public class CollectCargo extends Command {
@@ -12,14 +13,24 @@ public class CollectCargo extends Command {
   /** The time to wait till the cargo is collected */
   private double waitTime;
 
-  /**the time at which the command started runing */
+  /** the time at which the command started runing */
   private double startTime;
 
-  public CollectCargo() {
+  /**
+   * @param collect checks if the robot needs to collect or eject the cargo
+   */
+  public CollectCargo(boolean collect, double power, double waitTime) {
     requires(Robot.cargoCollector);
-    //TODO: find real values
-    power = 0.1;
-    waitTime = 4;
+    if (collect)
+      this.power = power;
+    else
+      this.power = -power;
+    this.waitTime = 4;
+  }
+
+  public CollectCargo(boolean collect) {
+    this(collect, SmartDashboard.getNumber("cargoCollector power: ", 0),
+        SmartDashboard.getNumber("cargoCollector waitTime: ", 0));
   }
 
   @Override

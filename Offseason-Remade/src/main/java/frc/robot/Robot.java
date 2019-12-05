@@ -127,9 +127,6 @@ public class Robot extends TimedRobot {
 
     //TODO: changed for real game to autonamasInit
     /**setting the default state of the hatch collector */
-
-    hatchCollector.setEject(false);
-
     hatchCollector.setLock(true);
   }
 
