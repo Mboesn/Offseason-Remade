@@ -9,7 +9,8 @@ import frc.robot.Commands.CollectCargo;
 import frc.robot.Commands.HatchLock;
 
 /**
- * This calls contains the remotes and how they control the robot
+ * This class is the glue that binds the controls on the physical operator
+ * interface to the commands and command groups that allow control of the robot.
  */
 public class OI {
   Joystick driverJoystick = new Joystick(0);
