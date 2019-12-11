@@ -7,7 +7,7 @@ import frc.robot.RobotConstants.Height;
  * to take action
  */
 public class RobotStates {
-    private boolean isHatchCollectorLocked;
+    private boolean isHatchHolderLocked;
     private int desiredHeight;
 
     private Height[] heights = new RobotConstants.Height[] { Height.FLOOR_LOW_HATCH, Height.CARGOSHIP, Height.CARGO_LOW,
@@ -17,15 +17,15 @@ public class RobotStates {
         return heights[desiredHeight];
     }
 
-    public void setDesiredHeight(int desiredHeight) {
-        this.desiredHeight += desiredHeight;
+    public void addToDesiredHeight(int desiredHeight) {
+        desiredHeight += desiredHeight;
     }
 
-    public boolean isHatchCollectorLocked(){
-        return isHatchCollectorLocked;
+    public boolean isHatchHolderLocked() {
+        return isHatchHolderLocked;
     }
 
-    public void setCollectorState(boolean isLocked) {
-        this.isHatchCollectorLocked = isLocked;
+    public void setHatchHolderState(boolean isLocked) {
+        isHatchHolderLocked = isLocked;
     }
 }

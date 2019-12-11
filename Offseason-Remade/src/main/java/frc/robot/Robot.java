@@ -7,7 +7,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.subsystems.CargoCollector;
 import frc.robot.subsystems.Drivetrain;
-import frc.robot.subsystems.HatchCollector;
+import frc.robot.subsystems.HatchHolder;
 import frc.robot.subsystems.Lift;
 
 /**
@@ -18,16 +18,15 @@ import frc.robot.subsystems.Lift;
  * project.
  */
 public class Robot extends TimedRobot {
-  public static OI m_oi;
 
-  Command m_autonomousCommand;
-  SendableChooser<Command> m_chooser = new SendableChooser<>();
+  Command autonomousCommand;
+  SendableChooser<Command> autoChooser = new SendableChooser<Command>();
 
   public static Drivetrain drivetrain;
 
   public static CargoCollector cargoCollector;
 
-  public static HatchCollector hatchCollector;
+  public static HatchHolder hatchHolder;
 
   public static Lift lift;
 
@@ -35,21 +34,17 @@ public class Robot extends TimedRobot {
 
   public static RobotStates robotStates;
 
-  /**
-   * This function is run when the robot is first started up and should be used
-   * for any initialization code.
-   */
   @Override
   public void robotInit() {
-    m_oi = new OI();
+    oi = new OI();
     // chooser.addOption("My Auto", new MyAutoCommand());
-    SmartDashboard.putData("Auto mode", m_chooser);
+    SmartDashboard.putData("Auto mode", autoChooser);
 
     drivetrain = new Drivetrain();
 
     cargoCollector = new CargoCollector();
 
-    hatchCollector = new HatchCollector();
+    hatchHolder = new HatchHolder();
 
     lift = new Lift();
 
@@ -57,15 +52,6 @@ public class Robot extends TimedRobot {
 
   }
 
-  /**
-   * This function is called every robot packet, no matter the mode. Use this for
-   * items like diagnostics that you want ran during disabled, autonomous,
-   * teleoperated and test.
-   *
-   * <p>
-   * This runs after the mode specific periodic functions, but before LiveWindow
-   * and SmartDashboard integrated updating.
-   */
   @Override
   public void robotPeriodic() {
   }
@@ -98,7 +84,7 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void autonomousInit() {
-    m_autonomousCommand = m_chooser.getSelected();
+    autonomousCommand = autoChooser.getSelected();
 
     /*
      * String autoSelected = SmartDashboard.getString("Auto Selector", "Default");
@@ -108,8 +94,8 @@ public class Robot extends TimedRobot {
      */
 
     // schedule the autonomous command (example)
-    if (m_autonomousCommand != null) {
-      m_autonomousCommand.start();
+    if (autonomousCommand != null) {
+      autonomousCommand.start();
     }
   }
 
@@ -127,13 +113,10 @@ public class Robot extends TimedRobot {
     // teleop starts running. If you want the autonomous to
     // continue until interrupted by another command, remove
     // this line or comment it out.
-    if (m_autonomousCommand != null) {
-      m_autonomousCommand.cancel();
+    if (autonomousCommand != null) {
+      autonomousCommand.cancel();
     }
 
-    // TODO: changed for real game to autonamasInit
-    /** setting the default state of the hatch collector */
-    hatchCollector.setLock(true);
   }
 
   /**

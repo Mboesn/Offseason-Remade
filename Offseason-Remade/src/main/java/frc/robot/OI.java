@@ -1,10 +1,10 @@
 package frc.robot;
 
-import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
+import frc.robot.Commands.AddToDesiredHeight;
 import frc.robot.Commands.ChangeLiftHeight;
-import frc.robot.Commands.ChangedDesiredHeight;
 import frc.robot.Commands.CollectCargo;
 import frc.robot.Commands.HatchLock;
 
@@ -13,21 +13,31 @@ import frc.robot.Commands.HatchLock;
  * interface to the commands and command groups that allow control of the robot.
  */
 public class OI {
-  Joystick driverJoystick = new Joystick(0);
+  XboxController driverXbox;
 
-  Joystick operatorJoystick = new Joystick(1);
+  XboxController operatorXbox;
   // operator buttons
-  Button operatorButtonA = new JoystickButton(operatorJoystick, 0);
-  Button operatorButtonB = new JoystickButton(operatorJoystick, 1);
-  Button operatorButtonX = new JoystickButton(operatorJoystick, 2);
-  Button operatorButtonY = new JoystickButton(operatorJoystick, 3);
-  Button operatorLeftBumper = new JoystickButton(operatorJoystick, 4);
-  Button operatorRightBumper = new JoystickButton(operatorJoystick, 5);
+  Button operatorButtonA;
+  Button operatorButtonB;
+  Button operatorButtonX;
+  Button operatorButtonY;
+  Button operatorLeftBumper;
+  Button operatorRightBumper;
 
   public OI() {
+    driverXbox = new XboxController(0);
 
-    operatorLeftBumper.whenPressed(new ChangedDesiredHeight(-1));
-    operatorRightBumper.whenPressed(new ChangedDesiredHeight(1));
+    operatorXbox = new XboxController(1);
+    // operator buttons
+    operatorButtonA = new JoystickButton(operatorXbox, 1);
+    operatorButtonB = new JoystickButton(operatorXbox, 2);
+    operatorButtonX = new JoystickButton(operatorXbox, 3);
+    operatorButtonY = new JoystickButton(operatorXbox, 4);
+    operatorLeftBumper = new JoystickButton(operatorXbox, 5);
+    operatorRightBumper = new JoystickButton(operatorXbox, 6);
+
+    operatorLeftBumper.whenPressed(new AddToDesiredHeight(-1));
+    operatorRightBumper.whenPressed(new AddToDesiredHeight(1));
     // TODO: find real values
     operatorButtonY.whenPressed(new ChangeLiftHeight(0, 0, 0, 0, 0, Robot.robotStates.getDesiredHeight()));
     operatorButtonX.whenPressed(new HatchLock());
@@ -36,8 +46,8 @@ public class OI {
 
   }
 
-  public Joystick getDriverJoystick() {
-    return driverJoystick;
+  public XboxController getdriverXbox() {
+    return driverXbox;
   }
 
 }

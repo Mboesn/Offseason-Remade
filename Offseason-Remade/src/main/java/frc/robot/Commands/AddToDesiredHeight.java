@@ -6,18 +6,18 @@ import frc.robot.Robot;
 /**
  * This changes the desiered height in the robotstates
  */
-public class ChangedDesiredHeight extends InstantCommand {
+public class AddToDesiredHeight extends InstantCommand {
 
   private int change;
 
-  public ChangedDesiredHeight(int change) {
+  public AddToDesiredHeight(int change) {
     super();
     this.change = change;
   }
 
   @Override
   protected void initialize() {
-    Robot.robotStates.setDesiredHeight(change);
+    Robot.robotStates.addToDesiredHeight(change);
   }
 
 }

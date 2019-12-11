@@ -30,7 +30,7 @@ public class RobotComponents {
                 // the encoders are not connected to the same motor controllers as the motors
                 public static final TalonSRX RIGHT_ENCODER = new TalonSRX(RobotMap.CAN.DRIVETRAIN_RIGHT_ENCODER);
                 // this motor is also connected to the cargo collector motor
-                public static final TalonSRX LEFT_ENCODER = new TalonSRX(RobotMap.CAN.DRIVETRAIN_LEFT_ENCODER);
+                public static final TalonSRX LEFT_ENCODER = CargoCollector.MOTOR;
 
                 public static final AnalogGyro GYRO = new AnalogGyro(RobotMap.DIO.GYRO);
         }
@@ -44,9 +44,8 @@ public class RobotComponents {
                 public static final TalonSRX MOTOR = new TalonSRX(RobotMap.CAN.CARGO_HOLDER_MOTOR);
         }
 
-        public static class HatchCollector {
-                public static final DoubleSolenoid HATCH_LOCK = new DoubleSolenoid(
-                                RobotMap.PCM.HATCH_HOLDER_LOCK_SOLENOID_FORWARD,
-                                RobotMap.PCM.HATCH_HOLDER_LOCK_SOLENOID_REVERSE);
+        public static class HatchHolder {
+                public static final DoubleSolenoid SOLENOID = new DoubleSolenoid(
+                                RobotMap.PCM.HATCH_HOLDER_SOLENOID_FORWARD, RobotMap.PCM.HATCH_HOLDER_SOLENOID_REVERSE);
         }
 }

@@ -19,8 +19,6 @@ public class RobotMap {
     public static final int DRIVETRAIN_LEFT_REAR_MOTOR = 3;
 
     public static final int DRIVETRAIN_RIGHT_ENCODER = 12;
-    // TODO: find this port
-    public static final int DRIVETRAIN_LEFT_ENCODER = 0;
 
     // lift
     public static final int LIFT_RIGHT_MOTOR = 2;
@@ -37,8 +35,8 @@ public class RobotMap {
 
   // Solenoid ports connected to PCM
   static class PCM {
-    public static final int HATCH_HOLDER_LOCK_SOLENOID_FORWARD = 2;
-    public static final int HATCH_HOLDER_LOCK_SOLENOID_REVERSE = 3;
+    public static final int HATCH_HOLDER_SOLENOID_FORWARD = 2;
+    public static final int HATCH_HOLDER_SOLENOID_REVERSE = 3;
     // public static final int PCM_PORT = 0;
   }
 }
