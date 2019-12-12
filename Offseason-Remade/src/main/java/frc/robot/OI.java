@@ -6,7 +6,7 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import frc.robot.Commands.AddToDesiredHeight;
 import frc.robot.Commands.ChangeLiftHeight;
 import frc.robot.Commands.CollectCargo;
-import frc.robot.Commands.HatchLock;
+import frc.robot.Commands.ToggleHatchLock;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -40,7 +40,7 @@ public class OI {
     operatorRightBumper.whenPressed(new AddToDesiredHeight(1));
     // TODO: find real values
     operatorButtonY.whenPressed(new ChangeLiftHeight(0, 0, 0, 0, 0, Robot.robotStates.getDesiredHeight()));
-    operatorButtonX.whenPressed(new HatchLock());
+    operatorButtonX.whenPressed(new ToggleHatchLock());
     operatorButtonB.whenPressed(new CollectCargo(true, 0, 0));
     operatorButtonA.whenPressed(new CollectCargo(false, 0, 0));
 

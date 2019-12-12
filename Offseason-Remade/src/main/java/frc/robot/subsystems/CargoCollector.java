@@ -14,7 +14,7 @@ public class CargoCollector extends Subsystem {
   private TalonSRX motor;
 
   public CargoCollector() {
-    this.motor = RobotComponents.CargoCollector.MOTOR;
+    motor = RobotComponents.CargoCollector.MOTOR;
   }
 
   public void setPower(double power) {

@@ -6,13 +6,13 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.Robot;
 import frc.robot.PIDSources.LiftPIDSource;
-import frc.robot.RobotConstants.Height;
+import frc.robot.MagicNumbers.Height;
 
 /** this command sets the lift to the desired height */
 public class ChangeLiftHeight extends Command {
 
   /** the values of the pid */
-  private double kp, kd, ki;
+  private double kp, ki, kd;
 
   /** the time the pid controller should wait on the target */
   private double waitTime;
@@ -29,7 +29,7 @@ public class ChangeLiftHeight extends Command {
 
   private LiftPIDSource pidSource;
 
-  public ChangeLiftHeight(double kp, double kd, double ki, double waitTime, double tolerance, Height desiredHeight) {
+  public ChangeLiftHeight(double kp, double ki, double kd, double waitTime, double tolerance, Height desiredHeight) {
     this.kp = kp;
     this.ki = ki;
     this.kd = kd;

@@ -8,17 +8,13 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import frc.robot.Robot;
 import frc.robot.RobotComponents;
-import frc.robot.RobotConstants;
 import frc.robot.Commands.DriveArcade;
+import frc.robot.MagicNumbers.Sensors;
 
 /**
  * this is the drivetrain's subsystem
  */
 public class Drivetrain extends Subsystem {
-
-  private SpeedControllerGroup rightMotors;
-
-  private SpeedControllerGroup leftMotors;
 
   private DifferentialDrive drivetrain;
 
@@ -29,39 +25,45 @@ public class Drivetrain extends Subsystem {
   private AnalogGyro gyro;
 
   public Drivetrain() {
-    this.rightMotors = new SpeedControllerGroup(RobotComponents.Drivetrain.RIGHT_FRONT_MOTOR,
-        RobotComponents.Drivetrain.RIGHT_MIDDLE_MOTOR, RobotComponents.Drivetrain.RIGHT_REAR_MOTOR);
+    rightEncoder = RobotComponents.Drivetrain.RIGHT_ENCODER;
 
-    this.leftMotors = new SpeedControllerGroup(RobotComponents.Drivetrain.LEFT_FRONT_MOTOR,
-        RobotComponents.Drivetrain.LEFT_MIDDLE_MOTOR, RobotComponents.Drivetrain.LEFT_REAR_MOTOR);
+    leftEncoder = RobotComponents.Drivetrain.LEFT_ENCODER;
 
-    this.rightEncoder = RobotComponents.Drivetrain.RIGHT_ENCODER;
+    gyro = RobotComponents.Drivetrain.GYRO;
 
-    this.leftEncoder = RobotComponents.Drivetrain.LEFT_ENCODER;
-
-    this.gyro = RobotComponents.Drivetrain.GYRO;
-
-    this.drivetrain = new DifferentialDrive(this.leftMotors, this.rightMotors);
+    drivetrain = new DifferentialDrive(
+        new SpeedControllerGroup(RobotComponents.Drivetrain.LEFT_FRONT_MOTOR,
+            RobotComponents.Drivetrain.LEFT_MIDDLE_MOTOR, RobotComponents.Drivetrain.LEFT_REAR_MOTOR),
+        new SpeedControllerGroup(RobotComponents.Drivetrain.RIGHT_FRONT_MOTOR,
+            RobotComponents.Drivetrain.RIGHT_MIDDLE_MOTOR, RobotComponents.Drivetrain.RIGHT_REAR_MOTOR));
   }
 
+  /**
+   * this functions are inverted beacuse wpi use x as forward and z as rotation
+   * but we use x rotation and y forward do not change back
+   */
   public void arcadeDrive(double xPower, double yPower) {
     drivetrain.arcadeDrive(yPower, xPower);
   }
 
+  /**
+   * this functions are inverted beacuse wpi use x as forward and z as rotation
+   * but we use x rotation and y forward do not change back
+   */
   public void curvatureDrive(double xPower, double yPower, boolean isQuickTurn) {
     drivetrain.curvatureDrive(yPower, xPower, isQuickTurn);
   }
 
-  public void tankDrive(double rightPower, double leftPower) {
+  public void tankDrive(double leftPower, double rightPower) {
     drivetrain.tankDrive(leftPower, rightPower);
   }
 
   public Double getRightDistance() {
-    return rightEncoder.getSelectedSensorPosition() * RobotConstants.Sensors.DRIVETRAIN_DISTANCE_PER_PULSE;
+    return rightEncoder.getSelectedSensorPosition() * Sensors.DRIVETRAIN_DISTANCE_PER_PULSE;
   }
 
   public Double getLeftDistance() {
-    return leftEncoder.getSelectedSensorPosition() * RobotConstants.Sensors.DRIVETRAIN_DISTANCE_PER_PULSE;
+    return leftEncoder.getSelectedSensorPosition() * Sensors.DRIVETRAIN_DISTANCE_PER_PULSE;
   }
 
   public Double getAverageDistance() {
@@ -72,8 +74,9 @@ public class Drivetrain extends Subsystem {
     return gyro.getAngle();
   }
 
-  public double getGyroPID() {
-    return gyro.pidGet();
+  /** get the gyro for use as a PID source */
+  public AnalogGyro getGyro() {
+    return gyro;
   }
 
   public void calibrateGyro() {

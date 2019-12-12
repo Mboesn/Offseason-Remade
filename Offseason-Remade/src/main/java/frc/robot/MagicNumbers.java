@@ -1,9 +1,15 @@
 package frc.robot;
 
 /**
- * numarical constants involving the robot
+ * numarical constants
  */
-public class RobotConstants {
+public class MagicNumbers {
+
+    public static class Miscellaneous {
+        // TODO: find real value
+        public static final double COLLECT_CARGO_WAIT_TIME = 4;
+    }
+
     public static class Sensors {
         // TODO: find real values
         /** The distance the robot travels every pulse */

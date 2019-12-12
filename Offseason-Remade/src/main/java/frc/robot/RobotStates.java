@@ -1,6 +1,6 @@
 package frc.robot;
 
-import frc.robot.RobotConstants.Height;
+import frc.robot.MagicNumbers.Height;
 
 /**
  * this class saves all the states at which the robot is in so it could know how
@@ -10,7 +10,7 @@ public class RobotStates {
     private boolean isHatchHolderLocked;
     private int desiredHeight;
 
-    private Height[] heights = new RobotConstants.Height[] { Height.FLOOR_LOW_HATCH, Height.CARGOSHIP, Height.CARGO_LOW,
+    private Height[] heights = new MagicNumbers.Height[] { Height.FLOOR_LOW_HATCH, Height.CARGOSHIP, Height.CARGO_LOW,
             Height.HATCH_MIDDLE, Height.CARGO_MIDDLE, Height.HATCH_HIGH, Height.CARGO_HIGH };
 
     public Height getDesiredHeight() {
@@ -25,7 +25,7 @@ public class RobotStates {
         return isHatchHolderLocked;
     }
 
-    public void setHatchHolderState(boolean isLocked) {
-        isHatchHolderLocked = isLocked;
+    public void toggleHatchHolderState() {
+        isHatchHolderLocked = !isHatchHolderLocked;
     }
 }

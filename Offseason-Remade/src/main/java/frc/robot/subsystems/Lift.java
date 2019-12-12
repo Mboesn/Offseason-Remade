@@ -5,7 +5,7 @@ import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.RobotComponents;
-import frc.robot.RobotConstants;
+import frc.robot.MagicNumbers.Sensors;
 
 /**
  * This lifts the cargo and hatch collecters
@@ -17,10 +17,10 @@ public class Lift extends Subsystem {
   private TalonSRX leftMotor;
 
   public Lift() {
-    this.rightMotor = RobotComponents.Lift.RIGHT_MOTOR;
-    this.leftMotor = RobotComponents.Lift.LEFT_MOTOR;
+    rightMotor = RobotComponents.Lift.RIGHT_MOTOR;
+    leftMotor = RobotComponents.Lift.LEFT_MOTOR;
 
-    this.leftMotor.follow(this.rightMotor);
+    leftMotor.follow(rightMotor);
   }
 
   public void setPower(double power) {
@@ -28,11 +28,11 @@ public class Lift extends Subsystem {
   }
 
   public void resetEncoders(){
-    this.rightMotor.setSelectedSensorPosition(0);
+    rightMotor.setSelectedSensorPosition(0);
   }
 
   public double getHeight() {
-    return rightMotor.getSelectedSensorPosition() * RobotConstants.Sensors.LIFT_DISTANCE_PER_PULSE;
+    return rightMotor.getSelectedSensorPosition() * Sensors.LIFT_DISTANCE_PER_PULSE;
   }
 
   @Override

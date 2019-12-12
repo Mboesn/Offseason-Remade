@@ -11,7 +11,6 @@ public class AddToDesiredHeight extends InstantCommand {
   private int change;
 
   public AddToDesiredHeight(int change) {
-    super();
     this.change = change;
   }
 

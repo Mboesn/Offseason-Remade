@@ -5,14 +5,14 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.RobotComponents;
 
 /**
- * Add your docs here.
+ * this is the hatch holder subsystem
  */
 public class HatchHolder extends Subsystem {
 
   private DoubleSolenoid solenoid;
 
   public HatchHolder() {
-    this.solenoid = RobotComponents.HatchHolder.SOLENOID;
+    solenoid = RobotComponents.HatchHolder.SOLENOID;
     /** setting the default state of the hatch collector */
     setLock(true);
   }

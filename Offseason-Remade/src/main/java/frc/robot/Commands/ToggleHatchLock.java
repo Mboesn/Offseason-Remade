@@ -6,10 +6,9 @@ import frc.robot.Robot;
 /**
  * this command locks and unlocks the hatch locker
  */
-public class HatchLock extends InstantCommand {
+public class ToggleHatchLock extends InstantCommand {
 
-  public HatchLock() {
-    super();
+  public ToggleHatchLock() {
     requires(Robot.hatchHolder);
   }
 
@@ -18,7 +17,7 @@ public class HatchLock extends InstantCommand {
     // the command checks if what the current state of the hatch collecter is and
     // then does the opposite.
     Robot.hatchHolder.setLock(!Robot.robotStates.isHatchHolderLocked());
-    Robot.robotStates.setHatchHolderState(!Robot.robotStates.isHatchHolderLocked());
+    Robot.robotStates.toggleHatchHolderState();
   }
 
 }
