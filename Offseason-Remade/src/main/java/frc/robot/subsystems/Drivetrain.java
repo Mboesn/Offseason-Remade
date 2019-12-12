@@ -86,6 +86,6 @@ public class Drivetrain extends Subsystem {
   @Override
   public void initDefaultCommand() {
     setDefaultCommand(
-        new DriveArcade(() -> Robot.m_oi.getDriverJoystick().getX(), () -> Robot.m_oi.getDriverJoystick().getY()));
+        new DriveArcade(() -> Robot.oi.getDriverJoystick().getX(), () -> Robot.oi.getDriverJoystick().getY()));
   }
 }

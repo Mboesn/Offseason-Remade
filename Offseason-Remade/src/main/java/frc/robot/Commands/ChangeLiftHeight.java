@@ -49,7 +49,7 @@ public class ChangeLiftHeight extends Command {
 
   @Override
   protected void initialize() {
-    pidController = new PIDController(kp, ki, kd, pidSource, (x) -> Robot.lift.setPower(x));
+    pidController = new PIDController(kp, ki, kd, pidSource, (output) -> Robot.lift.setPower(output));
     pidController.setAbsoluteTolerance(tolerance);
     pidController.setOutputRange(-1, 1);
     pidController.setSetpoint(desiredHeight);

@@ -43,7 +43,6 @@ public class OI {
     operatorButtonX.whenPressed(new ToggleHatchLock());
     operatorButtonB.whenPressed(new CollectCargo(true, 0, 0));
     operatorButtonA.whenPressed(new CollectCargo(false, 0, 0));
-
   }
 
   public XboxController getdriverXbox() {
