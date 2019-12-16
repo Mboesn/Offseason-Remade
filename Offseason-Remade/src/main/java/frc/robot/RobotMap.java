@@ -24,7 +24,7 @@ public class RobotMap {
     public static final int LIFT_RIGHT_MOTOR = 2;
     public static final int LIFT_LEFT_MOTOR = 6;
 
-    // cargo collector
+    // cargo holder
     public static final int CARGO_HOLDER_MOTOR = 11;
   }
 

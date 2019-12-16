@@ -23,7 +23,7 @@ public class MagicNumbers {
 
     // heights are measured in cm.
     public static enum Height {
-        FLOOR_LOW_HATCH(0), HATCH_MIDDLE(71), HATCH_HIGH(142), CARGOSHIP(80), CARGO_LOW(70), CARGO_MIDDLE(141),
+        FLOOR(0), HATCH_LOW(0), HATCH_MIDDLE(71), HATCH_HIGH(142), CARGOSHIP(80), CARGO_LOW(70), CARGO_MIDDLE(141),
         CARGO_HIGH(212);
 
         private Height(final int height) {

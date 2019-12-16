@@ -50,6 +50,18 @@ public class Robot extends TimedRobot {
 
     robotStates = new RobotStates();
 
+    // sending the value to the dashboard
+    // lift pid values
+    SmartDashboard.putNumber("lift kp: ", 0);
+    SmartDashboard.putNumber("lift ki: ", 0);
+    SmartDashboard.putNumber("lift kd: ", 0);
+    SmartDashboard.putNumber("lift waitTime: ", 0);
+    SmartDashboard.putNumber("lift tolerance: ", 0);
+    // cargo holder values
+    SmartDashboard.putNumber("cargoCollector power: ", 0);
+    SmartDashboard.putNumber("cargoCollector waitTime: ", 0);
+    // the desired height of the lift
+    SmartDashboard.putString("desired height: ", robotStates.getDesiredHeight().toString());
   }
 
   @Override

@@ -18,6 +18,12 @@ public class CollectCargo extends Command {
   private double startTime;
 
   /**
+   * this checks if we are testing and finding values and takes values from the
+   * dashboard instead of using set values
+   */
+  private boolean test;
+
+  /**
    * @param collect checks if the robot needs to collect or eject the cargo
    */
   public CollectCargo(boolean collect, double power, double waitTime) {
@@ -27,15 +33,25 @@ public class CollectCargo extends Command {
     else
       this.power = -power;
     waitTime = Miscellaneous.COLLECT_CARGO_WAIT_TIME;
+    test = false;
   }
 
-  public CollectCargo(boolean collect) {
-    this(collect, SmartDashboard.getNumber("cargoCollector power: ", 0),
-        SmartDashboard.getNumber("cargoCollector waitTime: ", 0));
+  /**
+   * this is used to quickly change values using the shuffleboard while finding
+   * values
+   */
+  public CollectCargo() {
+    test = true;
   }
 
   @Override
   protected void initialize() {
+
+    if (test) {
+      power = SmartDashboard.getNumber("cargoCollector power: ", 0);
+      waitTime = SmartDashboard.getNumber("cargoCollector waitTime: ", 0);
+    }
+
     startTime = Timer.getFPGATimestamp();
   }
 

@@ -10,7 +10,7 @@ public class RobotStates {
     private boolean isHatchHolderLocked;
     private int desiredHeight;
 
-    private Height[] heights = new MagicNumbers.Height[] { Height.FLOOR_LOW_HATCH, Height.CARGOSHIP, Height.CARGO_LOW,
+    private Height[] heights = new MagicNumbers.Height[] { Height.FLOOR, Height.HATCH_LOW, Height.CARGOSHIP, Height.CARGO_LOW,
             Height.HATCH_MIDDLE, Height.CARGO_MIDDLE, Height.HATCH_HIGH, Height.CARGO_HIGH };
 
     public Height getDesiredHeight() {

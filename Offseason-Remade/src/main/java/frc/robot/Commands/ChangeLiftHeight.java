@@ -29,6 +29,12 @@ public class ChangeLiftHeight extends Command {
 
   private LiftPIDSource pidSource;
 
+  /**
+   * this checks if we are testing pid and finding values and takes values from
+   * the dashboard instead of using set values
+   */
+  private boolean pidTest;
+
   public ChangeLiftHeight(double kp, double ki, double kd, double waitTime, double tolerance, Height desiredHeight) {
     this.kp = kp;
     this.ki = ki;
@@ -36,6 +42,7 @@ public class ChangeLiftHeight extends Command {
     this.waitTime = waitTime;
     this.tolerance = tolerance;
     this.desiredHeight = desiredHeight.getHeight();
+    this.pidTest = false;
   }
 
   /**
@@ -43,12 +50,22 @@ public class ChangeLiftHeight extends Command {
    * pid values
    */
   public ChangeLiftHeight(Height desiredHeight) {
-    this(SmartDashboard.getNumber("kp: ", 0), SmartDashboard.getNumber("ki: ", 0), SmartDashboard.getNumber("kd: ", 0),
-        SmartDashboard.getNumber("waitTime: ", 0), SmartDashboard.getNumber("tolerance: ", 0), desiredHeight);
+    this.desiredHeight = desiredHeight.getHeight();
+    this.pidTest = true;
+
   }
 
   @Override
   protected void initialize() {
+
+    if (pidTest) {
+      kp = SmartDashboard.getNumber("lift kp: ", 0);
+      ki = SmartDashboard.getNumber("lift ki: ", 0);
+      kd = SmartDashboard.getNumber("lift kd: ", 0);
+      waitTime = SmartDashboard.getNumber("lift waitTime: ", 0);
+      tolerance = SmartDashboard.getNumber("lift tolerance: ", 0);
+    }
+
     pidController = new PIDController(kp, ki, kd, pidSource, (output) -> Robot.lift.setPower(output));
     pidController.setAbsoluteTolerance(tolerance);
     pidController.setOutputRange(-1, 1);
