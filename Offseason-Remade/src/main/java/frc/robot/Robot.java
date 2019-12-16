@@ -5,6 +5,12 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import frc.robot.Commands.AddToDesiredHeight;
+import frc.robot.Commands.ChangeLiftHeight;
+import frc.robot.Commands.CollectCargo;
+import frc.robot.Commands.LiftOverride;
+import frc.robot.Commands.ResetLiftEncoder;
+import frc.robot.Commands.ToggleHatchLock;
 import frc.robot.subsystems.CargoCollector;
 import frc.robot.subsystems.Drivetrain;
 import frc.robot.subsystems.HatchHolder;
@@ -36,7 +42,6 @@ public class Robot extends TimedRobot {
 
   @Override
   public void robotInit() {
-    oi = new OI();
     // chooser.addOption("My Auto", new MyAutoCommand());
     SmartDashboard.putData("Auto mode", autoChooser);
 
@@ -50,6 +55,12 @@ public class Robot extends TimedRobot {
 
     robotStates = new RobotStates();
 
+    oi = new OI();
+
+    // TODO: remove this to use compressor
+    // turning off the compressor
+    RobotComponents.Miscellaneous.COMPRESSOR.stop();
+
     // sending the value to the dashboard
     // lift pid values
     SmartDashboard.putNumber("lift kp: ", 0);
@@ -62,6 +73,16 @@ public class Robot extends TimedRobot {
     SmartDashboard.putNumber("cargoCollector waitTime: ", 0);
     // the desired height of the lift
     SmartDashboard.putString("desired height: ", robotStates.getDesiredHeight().toString());
+    // putting here commands to run tests
+    SmartDashboard.putData("addToDisredHeight: ", new AddToDesiredHeight(1));
+    SmartDashboard.putData("removeFromDisredHeight: ", new AddToDesiredHeight(-1));
+    SmartDashboard.putData("test collectCargo: ", new CollectCargo());
+    SmartDashboard.putData("resetLiftEncoder: ", new ResetLiftEncoder());
+    SmartDashboard.putData("toggleHatchLock: ", new ToggleHatchLock());
+    SmartDashboard.putData("changeLiftHeight: ", new ChangeLiftHeight(robotStates.getDesiredHeight()));
+    SmartDashboard.putData("liftOverride: ", new LiftOverride());
+    // random values that should be in the dashboard
+    SmartDashboard.putNumber("lift encoder: ", lift.getHeight());
   }
 
   @Override
@@ -128,7 +149,6 @@ public class Robot extends TimedRobot {
     if (autonomousCommand != null) {
       autonomousCommand.cancel();
     }
-
   }
 
   /**

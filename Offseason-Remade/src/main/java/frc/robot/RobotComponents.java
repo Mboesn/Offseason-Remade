@@ -5,6 +5,7 @@ import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
 import edu.wpi.first.wpilibj.AnalogGyro;
+import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 
 /**
@@ -38,6 +39,8 @@ public class RobotComponents {
         public static class Lift {
                 public static final TalonSRX RIGHT_MOTOR = new TalonSRX(RobotMap.CAN.LIFT_RIGHT_MOTOR);
                 public static final TalonSRX LEFT_MOTOR = new TalonSRX(RobotMap.CAN.LIFT_LEFT_MOTOR);
+                // this encoder is not connected the the same motor controller the motors are
+                public static final TalonSRX ENCODER = new TalonSRX(RobotMap.CAN.LIFT_ENCODER);
         }
 
         public static class CargoCollector {
@@ -47,5 +50,9 @@ public class RobotComponents {
         public static class HatchHolder {
                 public static final DoubleSolenoid SOLENOID = new DoubleSolenoid(
                                 RobotMap.PCM.HATCH_HOLDER_SOLENOID_FORWARD, RobotMap.PCM.HATCH_HOLDER_SOLENOID_REVERSE);
+        }
+
+        public static class Miscellaneous {
+                public static final Compressor COMPRESSOR = new Compressor();
         }
 }

@@ -4,7 +4,6 @@ import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.Robot;
-import frc.robot.MagicNumbers.Miscellaneous;
 
 public class CollectCargo extends Command {
 
@@ -29,10 +28,10 @@ public class CollectCargo extends Command {
   public CollectCargo(boolean collect, double power, double waitTime) {
     requires(Robot.cargoCollector);
     if (collect)
-      this.power = power;
-    else
       this.power = -power;
-    waitTime = Miscellaneous.COLLECT_CARGO_WAIT_TIME;
+    else
+      this.power = power;
+    this.waitTime = waitTime;
     test = false;
   }
 

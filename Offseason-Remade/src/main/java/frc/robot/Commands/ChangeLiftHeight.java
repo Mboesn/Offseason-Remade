@@ -42,6 +42,7 @@ public class ChangeLiftHeight extends Command {
     this.waitTime = waitTime;
     this.tolerance = tolerance;
     this.desiredHeight = desiredHeight.getHeight();
+    pidSource = new LiftPIDSource();
     this.pidTest = false;
   }
 
@@ -51,8 +52,8 @@ public class ChangeLiftHeight extends Command {
    */
   public ChangeLiftHeight(Height desiredHeight) {
     this.desiredHeight = desiredHeight.getHeight();
+    pidSource = new LiftPIDSource();
     this.pidTest = true;
-
   }
 
   @Override

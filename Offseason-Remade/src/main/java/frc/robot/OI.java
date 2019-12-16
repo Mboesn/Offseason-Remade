@@ -7,6 +7,7 @@ import frc.robot.Commands.AddToDesiredHeight;
 import frc.robot.Commands.ChangeLiftHeight;
 import frc.robot.Commands.CollectCargo;
 import frc.robot.Commands.ToggleHatchLock;
+import frc.robot.MagicNumbers.Miscellaneous;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -41,12 +42,18 @@ public class OI {
     // TODO: find real values
     operatorButtonY.whenPressed(new ChangeLiftHeight(0, 0, 0, 0, 0, Robot.robotStates.getDesiredHeight()));
     operatorButtonX.whenPressed(new ToggleHatchLock());
-    operatorButtonB.whenPressed(new CollectCargo(true, 0, 0));
-    operatorButtonA.whenPressed(new CollectCargo(false, 0, 0));
+    operatorButtonB.whenPressed(
+        new CollectCargo(true, Miscellaneous.CARGO_COLLECT_AND_EJECT_POWER, Miscellaneous.COLLECT_CARGO_WAIT_TIME));
+    operatorButtonA.whenPressed(
+        new CollectCargo(false, Miscellaneous.CARGO_COLLECT_AND_EJECT_POWER, Miscellaneous.EJECT_CARGO_WAIT_TIME));
   }
 
   public XboxController getdriverXbox() {
     return driverXbox;
+  }
+
+  public XboxController getOperatorXbox() {
+    return operatorXbox;
   }
 
 }

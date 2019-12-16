@@ -23,6 +23,7 @@ public class RobotMap {
     // lift
     public static final int LIFT_RIGHT_MOTOR = 2;
     public static final int LIFT_LEFT_MOTOR = 6;
+    public static final int LIFT_ENCODER = 13;
 
     // cargo holder
     public static final int CARGO_HOLDER_MOTOR = 11;
@@ -35,8 +36,8 @@ public class RobotMap {
 
   // Solenoid ports connected to PCM
   static class PCM {
-    public static final int HATCH_HOLDER_SOLENOID_FORWARD = 2;
+    public static final int HATCH_HOLDER_SOLENOID_FORWARD = 1;
     public static final int HATCH_HOLDER_SOLENOID_REVERSE = 3;
-    // public static final int PCM_PORT = 0;
+    public static final int PCM_PORT = 0;
   }
 }
