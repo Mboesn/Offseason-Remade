@@ -87,6 +87,10 @@ public class Robot extends TimedRobot {
 
   @Override
   public void robotPeriodic() {
+    // the desired height of the lift
+    SmartDashboard.putString("desired height: ", robotStates.getDesiredHeight().toString());
+    // random values that should be in the dashboard
+    SmartDashboard.putNumber("lift encoder: ", lift.getHeight());
   }
 
   /**
